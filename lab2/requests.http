@@ -1,0 +1,76 @@
+### Все книги
+GET http://localhost:3000/api/books
+
+### Книга по ID (200)
+GET http://localhost:3000/api/books/2
+
+### Книга по ID (404)
+GET http://localhost:3000/api/books/100
+
+### Фильтр по жанру
+GET http://localhost:3000/api/books?genre=fantasy
+
+### Фильтр по году
+GET http://localhost:3000/api/books?year=1949
+
+### Фильтр по жанру и году
+GET http://localhost:3000/api/books?genre=fantasy&year=1937
+
+### Поиск по названию
+GET http://localhost:3000/api/books/search?title=node
+
+### Добавление книги (201)
+POST http://localhost:3000/api/books
+Content-Type: application/json
+
+{
+    "title": "Clean Code",
+    "authorId": 3,
+    "genre": "programming",
+    "year": 2008
+}
+
+### Добавление книги без обязательных полей (400)
+POST http://localhost:3000/api/books
+Content-Type: application/json
+
+{
+    "title": "Clean Code"
+}
+
+### Добавление книги с несуществующим автором (400)
+POST http://localhost:3000/api/books
+Content-Type: application/json
+
+{
+    "title": "Unknown Book",
+    "authorId": 100,
+    "genre": "fantasy",
+    "year": 2020
+}
+
+### Изменение книги
+PATCH http://localhost:3000/api/books/1
+Content-Type: application/json
+
+{
+    "year": 1938
+}
+
+### Удаление книги
+DELETE http://localhost:3000/api/books/4
+
+### Все авторы
+GET http://localhost:3000/api/authors
+
+### Автор по ID
+GET http://localhost:3000/api/authors/1
+
+### Книги автора
+GET http://localhost:3000/api/authors/1/books
+
+### Статистика
+GET http://localhost:3000/api/statistics
+
+### Неизвестный маршрут (404)
+GET http://localhost:3000/api/unknown
